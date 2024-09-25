@@ -1,0 +1,556 @@
+.import print
+.import init
+.import new
+.import delete
+procedurewain:
+lis $4
+.word 4
+lis $11
+.word 1
+sw $1, -4($30)
+sub $30, $30, $4
+sw $2, -4($30)
+sub $30, $30, $4
+sub $29, $30, $4
+lis $3
+.word 241
+sw $3, -4($30)
+sub $30, $30, $4
+sw $31, -4($30)
+sub $30, $30, $4
+lis $5
+.word init
+lis $2
+.word 0
+jalr $5
+add $30, $30, $4
+lw $31, -4($30)
+sw $31, -4($30)
+sub $30, $30, $4
+sw $29, -4($30)
+sub $30, $30, $4
+lis $5
+.word procedurescanning
+jalr $5
+add $30, $30, $4
+lw $29, -4($30)
+add $30, $30, $4
+lw $31, -4($30)
+add $30, $30, $4
+add $30, $30, $4
+add $30, $30, $4
+jr $31
+procedurescanning:
+sub $29, $30, $4
+lis $3
+.word 0
+sw $3, -4($30)
+sub $30, $30, $4
+lis $3
+.word 61453
+sw $3, -4($30)
+sub $30, $30, $4
+lis $3
+.word 1
+sw $3, -4($30)
+sub $30, $30, $4
+lis $3
+.word 241
+add $1, $0, $3
+sw $31, -4($30)
+sub $30, $30, $4
+lis $5
+.word new
+jalr $5
+add $30, $30, $4
+lw $31, -4($30)
+bne $3, $0, skipNullHandling0
+add $3, $3, $11
+skipNullHandling0:
+sw $3, -8($29)
+loopBegin1:
+sw $3, -4($30)
+sub $30, $30, $4
+lw $3, 0($29)
+add $5, $0, $3
+sw $5, -4($30)
+sub $30, $30, $4
+lis $3
+.word 241
+add $30, $30, $4
+lw $5, -4($30)
+slt $3, $5, $3
+bne $3, $11, loopEnd1
+add $30, $30, $4
+lw $3, -4($30)
+lw $3, -8($29)
+add $5, $0, $3
+sw $5, -4($30)
+sub $30, $30, $4
+lw $3, 0($29)
+add $30, $30, $4
+lw $5, -4($30)
+mult $3, $4
+mflo $3
+add $3, $5, $3
+sw $3, -4($30)
+sub $30, $30, $4
+lw $3, -4($29)
+add $30, $30, $4
+lw $5, -4($30)
+sw $3, 0($5)
+lw $3, 0($29)
+add $5, $0, $3
+sw $5, -4($30)
+sub $30, $30, $4
+lis $3
+.word 16
+add $30, $30, $4
+lw $5, -4($30)
+add $3, $5, $3
+sw $3, 0($29)
+beq $0, $0, loopBegin1
+loopEnd1:
+add $30, $30, $4
+lw $3, -4($30)
+lw $3, -8($29)
+add $1, $0, $3
+beq $1, $11, skipNullHandling2
+lis $5
+.word delete
+sw $31, -4($30)
+sub $30, $30, $4
+jalr $5
+add $30, $30, $4
+lw $31, -4($30)
+skipNullHandling2:
+sw $31, -4($30)
+sub $30, $30, $4
+sw $29, -4($30)
+sub $30, $30, $4
+lis $5
+.word procedureparsing
+jalr $5
+add $30, $30, $4
+lw $29, -4($30)
+add $30, $30, $4
+lw $31, -4($30)
+add $30, $30, $4
+add $30, $30, $4
+add $30, $30, $4
+jr $31
+procedureparsing:
+sub $29, $30, $4
+lis $3
+.word 1
+sw $3, -4($30)
+sub $30, $30, $4
+lis $3
+.word 1
+sw $3, -4($30)
+sub $30, $30, $4
+lis $3
+.word 1
+sw $3, -4($30)
+sub $30, $30, $4
+sw $31, -4($30)
+sub $30, $30, $4
+sw $29, -4($30)
+sub $30, $30, $4
+lis $5
+.word proceduresemanticAnalysis
+jalr $5
+add $30, $30, $4
+lw $29, -4($30)
+add $30, $30, $4
+lw $31, -4($30)
+add $30, $30, $4
+add $30, $30, $4
+add $30, $30, $4
+jr $31
+proceduresemanticAnalysis:
+sub $29, $30, $4
+lis $3
+.word 1
+sw $3, -4($30)
+sub $30, $30, $4
+lis $3
+.word 0
+sw $3, -4($30)
+sub $30, $30, $4
+lis $3
+.word 0
+sw $3, -4($30)
+sub $30, $30, $4
+lw $3, -4($29)
+add $5, $0, $3
+sw $5, -4($30)
+sub $30, $30, $4
+lw $3, -4($29)
+add $30, $30, $4
+lw $5, -4($30)
+add $3, $5, $3
+add $5, $0, $3
+sw $5, -4($30)
+sub $30, $30, $4
+lw $3, -4($29)
+add $30, $30, $4
+lw $5, -4($30)
+bne $3, $5, else3
+beq $0, $0, endif3
+else3:
+lis $3
+.word 1
+sw $3, -8($29)
+endif3:
+lw $3, -4($29)
+add $5, $0, $3
+sw $5, -4($30)
+sub $30, $30, $4
+lw $3, 0($29)
+add $30, $30, $4
+lw $5, -4($30)
+add $3, $5, $3
+add $5, $0, $3
+sw $5, -4($30)
+sub $30, $30, $4
+lw $3, 0($29)
+add $30, $30, $4
+lw $5, -4($30)
+bne $3, $5, else4
+beq $0, $0, endif4
+else4:
+lis $3
+.word 1
+sw $3, -8($29)
+endif4:
+lw $3, 0($29)
+add $5, $0, $3
+sw $5, -4($30)
+sub $30, $30, $4
+lw $3, -4($29)
+add $30, $30, $4
+lw $5, -4($30)
+add $3, $5, $3
+add $5, $0, $3
+sw $5, -4($30)
+sub $30, $30, $4
+lw $3, 0($29)
+add $30, $30, $4
+lw $5, -4($30)
+bne $3, $5, else5
+beq $0, $0, endif5
+else5:
+lis $3
+.word 1
+sw $3, -8($29)
+endif5:
+lw $3, -4($29)
+add $5, $0, $3
+sw $5, -4($30)
+sub $30, $30, $4
+lw $3, -4($29)
+add $30, $30, $4
+lw $5, -4($30)
+sub $3, $5, $3
+add $5, $0, $3
+sw $5, -4($30)
+sub $30, $30, $4
+lw $3, -4($29)
+add $30, $30, $4
+lw $5, -4($30)
+bne $3, $5, else6
+beq $0, $0, endif6
+else6:
+lis $3
+.word 1
+sw $3, -8($29)
+endif6:
+lw $3, 0($29)
+add $5, $0, $3
+sw $5, -4($30)
+sub $30, $30, $4
+lw $3, -4($29)
+add $30, $30, $4
+lw $5, -4($30)
+sub $3, $5, $3
+add $5, $0, $3
+sw $5, -4($30)
+sub $30, $30, $4
+lw $3, 0($29)
+add $30, $30, $4
+lw $5, -4($30)
+bne $3, $5, else7
+beq $0, $0, endif7
+else7:
+lis $3
+.word 1
+sw $3, -8($29)
+endif7:
+lw $3, 0($29)
+add $5, $0, $3
+sw $5, -4($30)
+sub $30, $30, $4
+lw $3, 0($29)
+add $30, $30, $4
+lw $5, -4($30)
+sub $3, $5, $3
+add $5, $0, $3
+sw $5, -4($30)
+sub $30, $30, $4
+lw $3, -4($29)
+add $30, $30, $4
+lw $5, -4($30)
+bne $3, $5, else8
+beq $0, $0, endif8
+else8:
+lis $3
+.word 1
+sw $3, -8($29)
+endif8:
+sw $31, -4($30)
+sub $30, $30, $4
+sw $29, -4($30)
+sub $30, $30, $4
+lis $5
+.word procedurecodeGeneration
+jalr $5
+add $30, $30, $4
+lw $29, -4($30)
+add $30, $30, $4
+lw $31, -4($30)
+add $30, $30, $4
+add $30, $30, $4
+add $30, $30, $4
+jr $31
+procedurecodeGeneration:
+sub $29, $30, $4
+sw $31, -4($30)
+sub $30, $30, $4
+sw $29, -4($30)
+sub $30, $30, $4
+lis $5
+.word procedureassembly
+jalr $5
+add $30, $30, $4
+lw $29, -4($30)
+add $30, $30, $4
+lw $31, -4($30)
+sw $1, -4($30)
+sub $30, $30, $4
+add $1, $0, $3
+lis $5
+.word print
+sw $31, -4($30)
+sub $30, $30, $4
+jalr $5
+add $30, $30, $4
+lw $31, -4($30)
+add $30, $30, $4
+lw $1, -4($30)
+sw $31, -4($30)
+sub $30, $30, $4
+sw $29, -4($30)
+sub $30, $30, $4
+lis $5
+.word procedureassembly
+jalr $5
+add $30, $30, $4
+lw $29, -4($30)
+add $30, $30, $4
+lw $31, -4($30)
+sw $1, -4($30)
+sub $30, $30, $4
+add $1, $0, $3
+lis $5
+.word print
+sw $31, -4($30)
+sub $30, $30, $4
+jalr $5
+add $30, $30, $4
+lw $31, -4($30)
+add $30, $30, $4
+lw $1, -4($30)
+sw $31, -4($30)
+sub $30, $30, $4
+sw $29, -4($30)
+sub $30, $30, $4
+lis $5
+.word procedureassembly
+jalr $5
+add $30, $30, $4
+lw $29, -4($30)
+add $30, $30, $4
+lw $31, -4($30)
+sw $1, -4($30)
+sub $30, $30, $4
+add $1, $0, $3
+lis $5
+.word print
+sw $31, -4($30)
+sub $30, $30, $4
+jalr $5
+add $30, $30, $4
+lw $31, -4($30)
+add $30, $30, $4
+lw $1, -4($30)
+lis $3
+.word 1
+jr $31
+procedureassembly:
+sub $29, $30, $4
+lis $3
+.word 31
+sw $3, -4($30)
+sub $30, $30, $4
+lis $3
+.word 65011720
+sw $3, -4($30)
+sub $30, $30, $4
+lis $3
+.word 0
+sw $3, -4($30)
+sub $30, $30, $4
+lw $3, 0($29)
+add $5, $0, $3
+sw $5, -4($30)
+sub $30, $30, $4
+lis $3
+.word 31
+add $30, $30, $4
+lw $5, -4($30)
+slt $3, $3, $5
+bne $3, $11, else9
+lis $3
+.word 1
+sw $3, -8($29)
+beq $0, $0, endif9
+else9:
+lw $3, -4($29)
+sw $1, -4($30)
+sub $30, $30, $4
+add $1, $0, $3
+lis $5
+.word print
+sw $31, -4($30)
+sub $30, $30, $4
+jalr $5
+add $30, $30, $4
+lw $31, -4($30)
+add $30, $30, $4
+lw $1, -4($30)
+endif9:
+sw $31, -4($30)
+sub $30, $30, $4
+sw $29, -4($30)
+sub $30, $30, $4
+lis $5
+.word procedurelinking
+jalr $5
+add $30, $30, $4
+lw $29, -4($30)
+add $30, $30, $4
+lw $31, -4($30)
+add $30, $30, $4
+add $30, $30, $4
+add $30, $30, $4
+jr $31
+procedurelinking:
+sub $29, $30, $4
+lis $3
+.word 1
+sw $3, -4($30)
+sub $30, $30, $4
+lis $3
+.word 40
+sw $3, -4($30)
+sub $30, $30, $4
+lis $3
+.word 200
+sw $3, -4($30)
+sub $30, $30, $4
+lw $3, -8($29)
+add $5, $0, $3
+sw $5, -4($30)
+sub $30, $30, $4
+lw $3, -4($29)
+add $30, $30, $4
+lw $5, -4($30)
+add $3, $5, $3
+add $5, $0, $3
+sw $5, -4($30)
+sub $30, $30, $4
+lw $3, 0($29)
+add $30, $30, $4
+lw $5, -4($30)
+add $3, $5, $3
+add $5, $0, $3
+sw $5, -4($30)
+sub $30, $30, $4
+sw $31, -4($30)
+sub $30, $30, $4
+sw $29, -4($30)
+sub $30, $30, $4
+lis $5
+.word procedureloading
+jalr $5
+add $30, $30, $4
+lw $29, -4($30)
+add $30, $30, $4
+lw $31, -4($30)
+add $30, $30, $4
+lw $5, -4($30)
+add $3, $5, $3
+add $30, $30, $4
+add $30, $30, $4
+add $30, $30, $4
+jr $31
+procedureloading:
+sub $29, $30, $4
+lis $3
+.word 1
+sw $3, -4($30)
+sub $30, $30, $4
+sw $31, -4($30)
+sub $30, $30, $4
+sw $29, -4($30)
+sub $30, $30, $4
+lis $5
+.word procedureexecution
+jalr $5
+add $30, $30, $4
+lw $29, -4($30)
+add $30, $30, $4
+lw $31, -4($30)
+add $1, $0, $3
+sw $31, -4($30)
+sub $30, $30, $4
+lis $5
+.word new
+jalr $5
+add $30, $30, $4
+lw $31, -4($30)
+bne $3, $0, skipNullHandling10
+add $3, $3, $11
+skipNullHandling10:
+sw $3, 0($29)
+lw $3, 0($29)
+add $1, $0, $3
+beq $1, $11, skipNullHandling11
+lis $5
+.word delete
+sw $31, -4($30)
+sub $30, $30, $4
+jalr $5
+add $30, $30, $4
+lw $31, -4($30)
+skipNullHandling11:
+lis $3
+.word 31
+add $30, $30, $4
+jr $31
+procedureexecution:
+sub $29, $30, $4
+lis $3
+.word 241
+jr $31

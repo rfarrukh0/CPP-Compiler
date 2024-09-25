@@ -1,0 +1,115 @@
+int execution()
+{
+    return 241;
+}
+int loading()
+{
+    int *memory = NULL;
+    memory = new int[execution()];
+    delete[] memory;
+    return 31;
+}
+int linking()
+{
+    int merl = 200;
+    int print = 40;
+    int alloc = 1;
+    return merl + print + alloc + loading();
+}
+int assembly()
+{
+    int ERROR = 0;
+    int instruction = 65011720;
+    int registerNumber = 31;
+    if (registerNumber > 31)
+    {
+        ERROR = 1;
+    }
+    else
+    {
+        println(instruction);
+    }
+    return linking();
+}
+int codeGeneration()
+{
+    println(assembly());
+    println(assembly());
+    println(assembly());
+    return 1;
+}
+int semanticAnalysis()
+{
+    int ERROR = 0;
+    int INT = 0;
+    int PTR = 1;
+    if (INT + INT == INT)
+    {
+    }
+    else
+    {
+        ERROR = 1;
+    }
+    if (INT + PTR == PTR)
+    {
+    }
+    else
+    {
+        ERROR = 1;
+    }
+    if (PTR + INT == PTR)
+    {
+    }
+    else
+    {
+        ERROR = 1;
+    }
+    if (INT - INT == INT)
+    {
+    }
+    else
+    {
+        ERROR = 1;
+    }
+    if (PTR - INT == PTR)
+    {
+    }
+    else
+    {
+        ERROR = 1;
+    }
+    if (PTR - PTR == INT)
+    {
+    }
+    else
+    {
+        ERROR = 1;
+    }
+    return codeGeneration();
+}
+int parsing()
+{
+    int *cfg = NULL;
+    int *dfa = NULL;
+    int *parseTree = NULL;
+    return semanticAnalysis();
+}
+int scanning()
+{
+    int *tokens = NULL;
+    int maximalMunch = 61453;
+    int c = 0;
+    tokens = new int[241];
+    while (c < 241)
+    {
+        *(tokens + c) = maximalMunch;
+        c = c + 16;
+    }
+    delete[] tokens;
+    return parsing();
+}
+int wain(int a, int b)
+{
+    int cs241 = 241;
+    return scanning();
+}

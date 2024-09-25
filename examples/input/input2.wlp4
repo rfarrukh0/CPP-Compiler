@@ -1,0 +1,90 @@
+int abs(int a)
+{
+    int temp = 0;
+    int negOne = 0;
+    negOne = 0 - 1;
+    if (a < 0)
+    {
+        temp = a * negOne;
+    }
+    else
+    {
+        temp = a;
+    }
+    return temp;
+}
+
+int tieBreak(int a, int b)
+{
+    int result = 0;
+    int numOne = 0;
+    int numTwo = 0;
+    int negOne = 0;
+    negOne = 0 - 1;
+    numOne = abs(a);
+    numTwo = abs(b);
+    if (numOne < numTwo)
+    {
+        result = a;
+    }
+    else
+    {
+        if (numOne > numTwo)
+        {
+            result = b;
+        }
+        else
+        {
+            if (a < 0)
+            {
+                result = a;
+            }
+            else
+            {
+                result = b;
+            }
+        }
+    }
+    return result;
+}
+
+int wain(int *array, int size)
+{
+    int *copy = NULL;
+    int i = 0;
+    int frequentCounter = 0;
+    int mostFrequent = 0;
+    int negOne = 0;
+    int curElement = 0;
+    negOne = 0 - 1;
+    copy = new int[483];
+    while (i < 483)
+    {
+        *(copy + i) = 0;
+        i = i + 1;
+    }
+    i = 0;
+    while (i < size)
+    {
+        curElement = *(array + i);
+        *(copy + curElement + 241) = *(copy + curElement + 241) + 1;
+        if (*(copy + curElement + 241) > frequentCounter)
+        {
+            frequentCounter = *(copy + curElement + 241);
+            mostFrequent = curElement;
+        }
+        else
+        {
+            if (*(copy + curElement + 241) == frequentCounter)
+            {
+                mostFrequent = tieBreak(mostFrequent, curElement);
+            }
+            else
+            {
+            }
+        }
+        i = i + 1;
+    }
+    delete[] copy;
+    return mostFrequent;
+}
