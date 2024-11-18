@@ -1,5 +1,4 @@
 ## WLP4 Compiler
-Description
 This project is a WLP4 (a subset of C++) compiler that tokenizes, verifies syntax and semantics, and translates WLP4 code into MIPS Assembly. It is designed to demonstrate an in-depth understanding of compiler design, including lexical analysis, parsing, syntax tree generation, and code generation.
 
 ## Features
